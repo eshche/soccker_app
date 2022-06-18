@@ -7,7 +7,7 @@ import Navbar from "./Components/Ui/Navbar";
 import CalendarLeague from "./routes/CalendarLeague";
 
 export default function Router() {
- // const [leageId, setLeageId] = useState();
+  const [leageId, setLeageId] = useState();
 
   return (
     <BrowserRouter>
@@ -15,7 +15,7 @@ export default function Router() {
       <Routes>
         <Route path="teams" element={<Teams />} />
         <Route path="leagues" element={<Leagues />} />
-        <Route path="leagues/:leageId" element={<CalendarLeague />} />
+        <Route path="leagues/:leageId" element={<CalendarLeague leageId={leageId}/>} />
         <Route index element={<Leagues />} />
         <Route path="*" element={<>Страница не найдена 404</>} />
       </Routes>
