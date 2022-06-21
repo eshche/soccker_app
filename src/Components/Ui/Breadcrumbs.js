@@ -5,13 +5,13 @@ import React from 'react'
 export default function Breadcrumbs(props) {
  //const leagueName = useGetLeagueMatches(props);
 
- console.log("Props", props)
+ console.log("Props", props.league.name)
 
   return (
     <div><nav class="breadcrumb" aria-label="breadcrumbs">
     <ul>
       <li>Leagues</li>
-      <li class="is-active"><a href="#" aria-current="page">leageName</a></li>
+      <li class="is-active"><a href="#" aria-current="page">{props.league.name}</a></li>
     </ul>
   </nav></div>
   )

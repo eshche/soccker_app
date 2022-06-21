@@ -7,8 +7,7 @@ import Pagination from "./Pagination";
 import { useNavigate, useParams } from "react-router-dom";
 
 export default function LeaguesList() {
-  const axios = require("axios").default;
-  const token = process.env.REACT_APP_TOKEN;
+  
 
   const [leagues, setLeagues] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -31,6 +30,10 @@ export default function LeaguesList() {
 
   const nextPage = () => setCurrentPage(prev => prev+1)
   const prevPage = () => setCurrentPage(prev => prev - 1)
+
+
+  const axios = require("axios").default;
+  const token = process.env.REACT_APP_TOKEN;
 
   useEffect(() => {
     const fetchLeagues = async () => {

@@ -15,7 +15,7 @@ export default function Router() {
       <Routes>
         <Route path="teams" element={<Teams />} />
         <Route path="leagues" element={<Leagues />} />
-        <Route path="leagues/:leageId" element={<CalendarLeague leageId={leageId}/>} />
+        <Route path="leagues/:leagueId" element={<CalendarLeague />} />
         <Route index element={<Leagues />} />
         <Route path="*" element={<>Страница не найдена 404</>} />
       </Routes>
