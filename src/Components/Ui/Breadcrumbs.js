@@ -5,7 +5,7 @@ import React from 'react'
 export default function Breadcrumbs(props) {
  //const leagueName = useGetLeagueMatches(props);
 
- console.log("Props", props.league.name)
+ console.log("Props", props)
 
   return (
     <div><nav class="breadcrumb" aria-label="breadcrumbs">

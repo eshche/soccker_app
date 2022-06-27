@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import Breadcrumbs from "../Components/Ui/Breadcrumbs";
 
-export default function CalendarLeague(props) {
+export default function CalendarTeam(props) {
   const { leagueId } = useParams();
 
   const [matches, setMatches] = useState([]);
@@ -17,7 +17,7 @@ export default function CalendarLeague(props) {
       const response = await axios
         // .get(`http://api.football-data.org/v2/competitions/2003/matches`, {
           // .get(`http://api.football-data.org/v2/competitions/${leagueId}/matches`, {
-            .get(`https://api.football-data.org/v2/competitions/CL/matches`, {
+            .get(`http://api.football-data.org/v4/teams/759/matches`, {
           headers: {
             "X-Auth-Token": token,
             "Content-Type": "text/plain",

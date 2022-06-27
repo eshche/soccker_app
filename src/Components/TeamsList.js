@@ -22,7 +22,7 @@ export default function TeamssList() {
   let navigate = useNavigate();
 
   const redirect = (id) => {
-    navigate(`/leagues/${id}`);
+    navigate(`/teams/${id}`);
   };
 
   const paginate = (pageNumber) => {
@@ -45,7 +45,7 @@ export default function TeamssList() {
         })
         .then((res) => res)
         .catch((err) => console.log(err));
-      console.log("teamss", response.data.teams);
+      console.log("teams", response.data.teams);
       setTeams(response.data.teams);
       setLoading(false);
     };
