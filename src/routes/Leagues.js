@@ -56,10 +56,6 @@ export default function Leagues() {
     fetchLeagues();
   }, []);
 
-  // if (loading) {
-  //   return <h1>loading...</h1>;
-  // }
-
   const [input, setInput] = useState("");
 
   const filteredLeagues = leagues.filter(league =>{
@@ -68,7 +64,7 @@ export default function Leagues() {
 
   return (
     <div>
-      <Search leagues={leagues} />
+      <Search />
       <input
         type="text"
         placeholder={"search league"}
