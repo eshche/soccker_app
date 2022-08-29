@@ -15,10 +15,8 @@ export default function CalendarLeague(props) {
     const fetchMatches = async () => {
       setLoading(true);
       const response = await axios
-        // .get(`http://api.football-data.org/v2/competitions/2003/matches`, {
-        .get(
-          `http://api.football-data.org/v2/competitions/${leagueId}/matches/`,
-          {
+        .get(`http://api.football-data.org/v2/competitions/2003/matches`, {
+        // .get( `http://api.football-data.org/v2/competitions/${leagueId}/matches/`,{
             // .get(`https://api.football-data.org/v2/competitions/CL/matches`, {
             headers: {
               "X-Auth-Token": token,

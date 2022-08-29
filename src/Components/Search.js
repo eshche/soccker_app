@@ -1,10 +1,17 @@
-import React from 'react'
+import React from "react";
 
-export default function Search() {
+const Search = ({ filter, setFilter }) => {
+console.log(filter)
+
   return (
     <div>
-
-      Search
+      <input
+        value={filter.query}
+        onChange={(e) => setFilter({ ...filter, query: e.target.value })}
+        placeholder="Search..."
+      />
     </div>
-  )
-}
+  );
+};
+
+export default Search;

@@ -1,21 +1,26 @@
 import React, { useEffect, useState } from "react";
-import LeaguesList from "../Components/LeaguesList";
+
 import Search from "../Components/Search";
 import LeagueCard from "../Components/Ui/LeagueCard";
 import Pagination from "../Components/Pagination";
 
 import { useNavigate, useParams } from "react-router-dom";
 
+import { useLeagues } from "../hooks/useLeaguesAndTeams";
+
 export default function Leagues() {
   const [leagues, setLeagues] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
-  const [leaguesPerPage] = useState(10);
+  const [leaguesPerPage] = useState(12);
+
+  const [filter, setFilter] = useState({ query: "" });
+  const searchedLeagues = useLeagues(leagues, filter.query);
 
   const lastLeagueIndex = currentPage * leaguesPerPage;
   const firstLeagueIndex = lastLeagueIndex - leaguesPerPage;
-  const currentLeagues = leagues.slice(firstLeagueIndex, lastLeagueIndex);
+  const currentLeagues = searchedLeagues.slice(firstLeagueIndex, lastLeagueIndex);
 
   let navigate = useNavigate();
 
@@ -56,22 +61,10 @@ export default function Leagues() {
     fetchLeagues();
   }, []);
 
-  const [input, setInput] = useState("");
-
-  const filteredLeagues = leagues.filter(league =>{
-    return league.name.toLowerCase().includes(league.toLowerCase)
-  })
-
   return (
     <div>
-      <Search />
-      <input
-        type="text"
-        placeholder={"search league"}
-        className="search_input"
-        onChange={(event) => event.target.value}
-      ></input>
-
+      <Search filter={filter} setFilter={setFilter} />
+      
       {loading ? (
         <p>loading...</p>
       ) : (
@@ -98,7 +91,7 @@ export default function Leagues() {
 
       <Pagination
         leaguesPerPage={leaguesPerPage}
-        totalLeagues={leagues.length}
+        totalLeagues={searchedLeagues.length}
         paginate={paginate}
         currentPage={currentPage}
       />
